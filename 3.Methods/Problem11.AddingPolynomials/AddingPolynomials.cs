@@ -185,7 +185,7 @@ namespace Problem11.AddingPolynomials
 
             for (int i = 0; i < product.Length; i++)
             {
-                
+                // todo
             }
 
             return product;
