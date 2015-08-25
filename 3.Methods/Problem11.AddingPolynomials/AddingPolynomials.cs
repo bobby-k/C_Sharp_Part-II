@@ -38,7 +38,10 @@ namespace Problem11.AddingPolynomials
             Console.Write("The second polynomial you entered is: ");
             PrintPolynomial(secondPolynomial);
 
+            Console.WriteLine("Press any key to move on...");
+            Console.ReadKey();
             Console.Clear();
+
             Console.Write("First entered polynomial:");
             PrintPolynomial(firstPolynomial);
             Console.Write("Second entered polynomial:");
