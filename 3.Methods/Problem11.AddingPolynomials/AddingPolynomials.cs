@@ -18,7 +18,6 @@ namespace Problem11.AddingPolynomials
 
         // TODO: да се не се отпечатва + когато следващото число е отрицателно
         // TODO: Explanations
-        // TODO: finish the multiplication of polynomials method
         private static void Main()
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
@@ -60,7 +59,7 @@ namespace Problem11.AddingPolynomials
             Console.WriteLine(new string('*', 40));
             Console.WriteLine("The product of the entered polynomials is:");
             decimal[] product = MultyplyPolynomials(firstPolynomial, secondPolynomial);
-            // correct result 
+            // correct result 4x^10 + -6x^8 + -4x^7 + -24x^6 + -7x^5 + -9x^4 + -7x^3 + 36x^2 + 7x + 24
             PrintPolynomial(product);
 
             Console.WriteLine(new string('*', 40));
@@ -172,20 +171,36 @@ namespace Problem11.AddingPolynomials
                 smallerPolynomial = polynomial;
             }
 
-            var result = new List<decimal[]>();// v result ima vsichki smetki kato otdelni masiwi s koef
-            for (int j = 0; j < smallerPolynomialLength; j++)
+            decimal[,] result = new decimal[smallerPolynomialLength, productLength];
+            
+            for (int i = 0, row = 0, col = 0; i < smallerPolynomialLength; i++)
             {
-                decimal[] tempResult = new decimal[biggerPolynomialLength];
-                for (int k = 0; k < biggerPolynomialLength; k++)
+                col = i;
+                for (int j = 0; j < biggerPolynomial.Length; j++)
                 {
-                    tempResult[k] = biggerPolynomial[k] * smallerPolynomial[j];
+                    result[row, col] = biggerPolynomial[j] * smallerPolynomial[i];
+                    col++;
                 }
-                result.Add(tempResult);
+                row++;
             }
 
-            for (int i = 0; i < product.Length; i++)
+            #region Принтира матрицата, т.е. сметките за да се проследи визуално дали се смята правилно (uncomment for debug)
+            //for (int i = 0; i < result.GetLength(0); i++)
+            //{
+            //    for (int j = 0; j < result.GetLength(1); j++)
+            //    {
+            //        Console.Write("{0,3}",result[i, j]);
+            //    }
+            //    Console.WriteLine();
+            //}
+            #endregion
+
+            for (int col = 0; col < result.GetLength(1); col++)
             {
-                // todo
+                for (int row = 0; row < result.GetLength(0); row++)
+                {
+                    product[col] += result[row, col];
+                }
             }
 
             return product;
