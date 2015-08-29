@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 
@@ -21,14 +20,14 @@ namespace Problem11.AddingPolynomials
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
-            // Потребителя ще въвежда степените на полиномите с които ще се работи
+            // Потребителя ще въвежда степента на полинома с който ще се работи
             Console.Write("Please enter the first polynomial's degree: ");
             int polynomialDegree = int.Parse(Console.ReadLine());
-            //string polynomial = "-2x^6 - 3x^3 + 4x^2 - x + 3";
+            // -2x^6 - 3x^3 + 4x^2 - x + 3
 
             Console.Write("Please enter the other polynomial's degree: ");
             int anotherPolynomialDegree = int.Parse(Console.ReadLine());
-            //string anotherPolynomial = "-2x^4 + 3x^2 + 5x + 8";
+            // -2x^4 + 3x^2 + 5x + 8
 
             // чрез метода GetPolynomialCoefficients() потребителят ще въведе коефициентите пред всеки едночлен в масив след това с
             // метода PrintPolynomial() ще отпечатим на потребителя получените полиноми
@@ -41,7 +40,8 @@ namespace Problem11.AddingPolynomials
             PrintPolynomial(secondPolynomial);
 
             // тук даваме възможност на юзъра да провери въведените полиноми след което изчистваме конзолата 
-            Console.WriteLine("Press any key to move on...");
+            Console.WriteLine("PRESS ANY KEY TO MOVE ON...");
+            Console.Beep();
             Console.ReadKey();
             Console.Clear();
 
@@ -57,7 +57,6 @@ namespace Problem11.AddingPolynomials
             // чрез SumPolynomials() ще се пресмята събиране на въведените полиноми
             Console.WriteLine("The sum of the entered polynomials is:");
             decimal[] sum = SumPolynomials(firstPolynomial, secondPolynomial);
-            // correct result -2x^6 + -2x^4 + -3x^3 + 7x^2 + 4x + 11
             PrintPolynomial(sum);
 
             Console.WriteLine(new string('*', 44));
@@ -65,7 +64,6 @@ namespace Problem11.AddingPolynomials
             // чрез SubstractPolynomials() ще се пресмята изваждане на въведените полиноми
             Console.WriteLine("The deduction of the entered polynomials is:");
             decimal[] deduction = SubstractPolynomials(firstPolynomial, secondPolynomial);
-            // correct result -2x^6 + 2x^4 + -3x^3 + x^2 + -6x + -5 
             PrintPolynomial(deduction);
 
             Console.WriteLine(new string('*', 44));
@@ -73,7 +71,6 @@ namespace Problem11.AddingPolynomials
             // чрез MultyplyPolynomials() ще се пресмята умножение на въведените полиноми
             Console.WriteLine("The product of the entered polynomials is:");
             decimal[] product = MultyplyPolynomials(firstPolynomial, secondPolynomial);
-            // correct result 4x^10 + -6x^8 + -4x^7 + -24x^6 + -7x^5 + -9x^4 + -7x^3 + 36x^2 + 7x + 24
             PrintPolynomial(product);
 
             Console.WriteLine(new string('*', 44));
@@ -181,14 +178,23 @@ namespace Problem11.AddingPolynomials
             return deduction;
         }
 
-        // TODO: Explanations
+        // Тук ще се случва умножението на полиномите, като резултата ще е нов полином от степен сбора от степените на най-левият член
+        // на единия полином и най-лявият член на другия полином
         private static decimal[] MultyplyPolynomials(decimal[] polynomial, decimal[] anotherPolynomial)
         {
+            // вземаме дължините на по-големия и по-малкия полином (дължината всъщност е степента на полинома + 1)
             int biggerPolynomialLength = Math.Max(polynomial.Length, anotherPolynomial.Length);
             int smallerPolynomialLength = Math.Min(polynomial.Length, anotherPolynomial.Length);
+
+            // дължината на крайният полином ще е броят едночлени минус 1, след - умножението на единият полином със всеки едночлен на
+            // другия полином и сумирането на получените резултати, като всеки нов резултат се отмества с една позиция на вътре (както
+            // е при умножение на числата в математиката).Крайният брой едночлени може да се пресметне като се знае, че всяко умножение
+            // на полином с пореден едночлен от друг полином добавя един нов едночлен към броя на едночлените в произведението, т.е ако
+            // първият има 5 монома, а вторият 3, то произведението ще има 5+(3-1) монома
             int productLength = biggerPolynomialLength + (smallerPolynomialLength - 1);
             decimal[] product = new decimal[productLength];
 
+            // пак определяме по-големият и по-малкият полином подобно на събирането и изваждането
             decimal[] biggerPolynomial;
             decimal[] smallerPolynomial;
             if (biggerPolynomialLength == polynomial.Length)
@@ -202,8 +208,14 @@ namespace Problem11.AddingPolynomials
                 smallerPolynomial = polynomial;
             }
 
+            // в тази матрица ще записваме резултатите от умножението на всички едночлени на по-големият полином с поредният едночлен
+            // на по-малкият полином, като всеки следващ резултат ще се записва на нов ред отместен с една позиция на дясно, така ще
+            // постигнем подравняване на подобните едночлени и ще можем да ги сумираме по-лесно нататък
             decimal[,] result = new decimal[smallerPolynomialLength, productLength];
-            
+
+            // вътрешният цикъл ще се грижи да се умножат всички елементи на по-големият полином с поредният елемент на по-малкия, а
+            // външният да се мине по всички елементи на по-малкият полином.Допълнителните броячи за ред и колона ще се грижат за
+            // правилното въвеждане в матрицата
             for (int i = 0, row = 0, col = 0; i < smallerPolynomialLength; i++)
             {
                 col = i;
@@ -215,7 +227,7 @@ namespace Problem11.AddingPolynomials
                 row++;
             }
 
-            #region Принтира матрицата, т.е. сметките за да се проследи визуално дали се смята правилно (uncomment for debug)
+            #region Принтира матрицата, т.е. сметките за да се проследи визуално дали се смята правилно (uncomment when debugging)
             //for (int i = 0; i < result.GetLength(0); i++)
             //{
             //    for (int j = 0; j < result.GetLength(1); j++)
@@ -226,6 +238,7 @@ namespace Problem11.AddingPolynomials
             //}
             #endregion
 
+            // тук сумираме подобните едночлени и оформяме крайното произведение
             for (int col = 0; col < result.GetLength(1); col++)
             {
                 for (int row = 0; row < result.GetLength(0); row++)
@@ -237,31 +250,49 @@ namespace Problem11.AddingPolynomials
             return product;
         }
 
-        // Този метод ще отпечатва подаден полином по подходящ начин TODO: Explanations
+        // Този метод ще отпечатва подаден полином по подходящ начин 
         private static void PrintPolynomial(decimal[] polynomial)
         {
+            // за да се отпечата правино ще е необходима степента на полинома, можем да я получим като от дължината на масива с коеф.
+            // извадим 1
             int polynomialDegree = polynomial.Length - 1;
 
+            // тръгваме в обратен ред тъй като сме записали въведените от потребителя коефициенти по такъв начин, че на нулева позиция
+            // имаме свободният член, а на последна позиция старши коеф.Това е направено с цел да се сумират по-лесно съотв. коеф. без
+            // да се излиза от границите на масивите
             for (int i = polynomial.Length - 1; i >= 0; i--)
             {
+                // тъй като последният член е всъщност ax^0, където "a" е коеф. и x^0 е 1 за всяко "x", то няма нужда от печатане на "x"
                 if (i == 0) Console.Write(polynomial[i]);
+                // предпоследният член е всъщност аx^1, където "a" е коеф. и x^1 е винаги "x" 
                 else if (polynomialDegree == 1)
                 {
+                    // знаейки че тук имаме винаги "x", то проверяваме коеф. пред него ако е 0, и крайният резултат ще е 0, т.е. няма
+                    // нужда от отпечатване
                     if (polynomial[i] == 0) continue;
 
+                    // ако коеф пред "x" е 1, той също няма нужда да се отпечатва само се взема знака в случай че е -1
                     if (polynomial[i] == 1) Console.Write("x" + " + ");
                     else if (polynomial[i] == -1) Console.Write("-x" + " + ");
+                    // във всички останали случаи се отпечатва коеф., "x" и +
                     else Console.Write(polynomial[i] + "x" + " + ");
                 }
+                // за всички останали едночлени (без последните 2)
                 else
                 {
+                    // ще се проверява ако коеф. е 0 се преминава към следващият едночлен, тъй като всичко*0 = 0, т.е. 0 не променя
+                    // резултата съответно няма нужда да се печата
                     if (polynomial[i] == 0)
                     {
                         polynomialDegree--;
                         continue;
                     }
+
+                    // ако коеф. е 1 или -1 ще се отпечатва само знака, в случай че е "-", "x", степента и +
                     if (polynomial[i] == 1) Console.Write("x^" + polynomialDegree + " + ");
                     else if (polynomial[i] == -1) Console.Write("-x^" + polynomialDegree + " + ");
+
+                    // при всички други случаи ще се отпечатва коеф., "x", степента и +
                     else Console.Write(polynomial[i] + "x^" + polynomialDegree + " + ");
                     polynomialDegree--;
                 }
