@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem12.SubtractingPolyno
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem13.SolveTasks", "Problem13.SolveTasks\Problem13.SolveTasks.csproj", "{65D42D5B-02CF-4BD7-9473-BDC0685768D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem14.IntegerCalculations", "Problem14.IntegerCalculations\Problem14.IntegerCalculations.csproj", "{75DB14A0-1BA2-4100-B308-5E0914FF3C22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{65D42D5B-02CF-4BD7-9473-BDC0685768D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65D42D5B-02CF-4BD7-9473-BDC0685768D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65D42D5B-02CF-4BD7-9473-BDC0685768D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75DB14A0-1BA2-4100-B308-5E0914FF3C22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75DB14A0-1BA2-4100-B308-5E0914FF3C22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75DB14A0-1BA2-4100-B308-5E0914FF3C22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75DB14A0-1BA2-4100-B308-5E0914FF3C22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
