@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Threading;
 
 internal class IntegerCalculations
 {
@@ -7,6 +9,8 @@ internal class IntegerCalculations
 
     private static void Main()
     {
+        Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+
         GetMin(9, 1, 7, -11, 6, 0, -3, 2);
         Console.WriteLine(new string('*', 55));
         GetMax(9, 1, 6, 0, -3, 2);

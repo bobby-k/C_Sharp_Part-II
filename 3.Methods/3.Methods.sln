@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem13.SolveTasks", "Pro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem14.IntegerCalculations", "Problem14.IntegerCalculations\Problem14.IntegerCalculations.csproj", "{75DB14A0-1BA2-4100-B308-5E0914FF3C22}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem15.NumberCalculations", "Problem15.NumberCalculations\Problem15.NumberCalculations.csproj", "{4D5FF597-12B0-47E8-B281-DB83F81F3098}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{75DB14A0-1BA2-4100-B308-5E0914FF3C22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75DB14A0-1BA2-4100-B308-5E0914FF3C22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75DB14A0-1BA2-4100-B308-5E0914FF3C22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D5FF597-12B0-47E8-B281-DB83F81F3098}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D5FF597-12B0-47E8-B281-DB83F81F3098}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D5FF597-12B0-47E8-B281-DB83F81F3098}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D5FF597-12B0-47E8-B281-DB83F81F3098}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
