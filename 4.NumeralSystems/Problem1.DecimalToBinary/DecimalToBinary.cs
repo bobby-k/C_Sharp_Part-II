@@ -17,6 +17,7 @@ internal class DecimalToBinary
 
     private static void ConvertDecimalToBinary(int userInput)
     {
+        userInput = Validate(userInput);
         int remain = 0;
         string tempBinaryRepr = "";
         string binaryRepr = "";
@@ -34,5 +35,15 @@ internal class DecimalToBinary
         }
 
         Console.WriteLine("{0} in decimal system is\n{1} in binary system", userInput, binaryRepr);
+    }
+
+    private static int Validate(int userInput)
+    {
+        while (userInput < 0)
+        {
+            Console.Write("Please enter a non-negative number: ");
+            userInput = int.Parse(Console.ReadLine());
+        }
+        return userInput;
     }
 }
