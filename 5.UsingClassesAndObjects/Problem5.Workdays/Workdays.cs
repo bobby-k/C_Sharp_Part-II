@@ -9,7 +9,7 @@ internal class Workdays
     // workdays are all days from Monday to Friday except a fixed list of public holidays specified preliminary as array.
 
     // P.S.Използвана е актуална информация за официалните празници и дните които ще се отработват през 2015г.
-    
+
     private static DateTime currentDay = DateTime.Now;
 
     private static DateTime endDate;
@@ -44,9 +44,10 @@ internal class Workdays
             numberOfDays--;
         }
 
-        // TODO: намери как да се отпечата само датата (DD/MM/YYYY) на обект от DateTime до тогава ще използваме string date
+        // TODO: намери как да се отпечата само датата (DD/MM/YYYY) на обект от DateTime до тогава ще използваме нашият string date
         string date = endDate.Day.ToString() + "/" + endDate.Month + "/" + endDate.Year;
         Console.WriteLine("There are {0} working days from today to {1} including", workingDays, date);
+        // вместо string date може да използваме endDate.Date.ToString("dd-MM-yyyy")
     }
 
     private static void GetEndDate()
