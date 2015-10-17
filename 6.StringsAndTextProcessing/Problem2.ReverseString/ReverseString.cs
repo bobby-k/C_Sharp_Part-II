@@ -1,18 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
-class ReverseString
+internal class ReverseString
 {
     // Write a program that reads a string, reverses it and prints the result at the console.
-    static void Main()
+    private static void Main()
     {
         Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
+        Console.Write("Please enter some text here: ");
+        string text = Console.ReadLine();
 
+        text = ReverseText(text);
+        Console.WriteLine(text);
+    }
+
+    private static string ReverseText(string text)
+    {
+        StringBuilder reversedText = new StringBuilder();
+
+        for (int i = text.Length - 1; i >= 0; i--)
+        {
+            reversedText.Append(text[i]);
+        }
+
+        return reversedText.ToString();
     }
 }
