@@ -35,6 +35,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem16.DateDifference", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem17.DateInBulgarian", "Problem17.DateInBulgarian\Problem17.DateInBulgarian.csproj", "{1A2ADD46-9163-4D11-BA1D-F64E0DD8F45E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem18.ExtractEMails", "Problem18.ExtractEMails\Problem18.ExtractEMails.csproj", "{E0E8DB3F-621F-416C-9AD0-DE09BD8B2CE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem19.DatesFromTextInCanada", "Problem19.DatesFromTextInCanada\Problem19.DatesFromTextInCanada.csproj", "{84BC9237-81DD-427F-BB65-60067F7CFE6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +109,14 @@ Global
 		{1A2ADD46-9163-4D11-BA1D-F64E0DD8F45E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A2ADD46-9163-4D11-BA1D-F64E0DD8F45E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A2ADD46-9163-4D11-BA1D-F64E0DD8F45E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0E8DB3F-621F-416C-9AD0-DE09BD8B2CE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0E8DB3F-621F-416C-9AD0-DE09BD8B2CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0E8DB3F-621F-416C-9AD0-DE09BD8B2CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0E8DB3F-621F-416C-9AD0-DE09BD8B2CE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84BC9237-81DD-427F-BB65-60067F7CFE6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84BC9237-81DD-427F-BB65-60067F7CFE6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84BC9237-81DD-427F-BB65-60067F7CFE6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84BC9237-81DD-427F-BB65-60067F7CFE6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
