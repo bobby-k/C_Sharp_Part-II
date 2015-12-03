@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem2.EnterNumbers", "Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem3.ReadFileContents", "Problem3.ReadFileContents\Problem3.ReadFileContents.csproj", "{B467E10E-2280-491D-8222-E263FB1DAD27}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem4.DownloadFile", "Problem4.DownloadFile\Problem4.DownloadFile.csproj", "{EE0FB1FF-692C-4B9E-8BFC-07EACC051457}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B467E10E-2280-491D-8222-E263FB1DAD27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B467E10E-2280-491D-8222-E263FB1DAD27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B467E10E-2280-491D-8222-E263FB1DAD27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE0FB1FF-692C-4B9E-8BFC-07EACC051457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE0FB1FF-692C-4B9E-8BFC-07EACC051457}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE0FB1FF-692C-4B9E-8BFC-07EACC051457}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE0FB1FF-692C-4B9E-8BFC-07EACC051457}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
