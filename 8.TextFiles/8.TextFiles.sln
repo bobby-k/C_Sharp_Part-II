@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem2.ConcatenateTextFil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem3.LineNumbers", "Problem3.LineNumbers\Problem3.LineNumbers.csproj", "{AAE8AC71-0A22-48DE-8CA2-CCFAD54A9FAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem4.CompareTextFiles", "Problem4.CompareTextFiles\Problem4.CompareTextFiles.csproj", "{BC621A78-A4AC-47D4-8B4B-BB20C922A939}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem5.MaximalAreaSum", "Problem5.MaximalAreaSum\Problem5.MaximalAreaSum.csproj", "{89FF15DE-D495-4104-97C6-EFCA41EC7EE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{AAE8AC71-0A22-48DE-8CA2-CCFAD54A9FAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAE8AC71-0A22-48DE-8CA2-CCFAD54A9FAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAE8AC71-0A22-48DE-8CA2-CCFAD54A9FAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC621A78-A4AC-47D4-8B4B-BB20C922A939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC621A78-A4AC-47D4-8B4B-BB20C922A939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC621A78-A4AC-47D4-8B4B-BB20C922A939}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC621A78-A4AC-47D4-8B4B-BB20C922A939}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89FF15DE-D495-4104-97C6-EFCA41EC7EE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89FF15DE-D495-4104-97C6-EFCA41EC7EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89FF15DE-D495-4104-97C6-EFCA41EC7EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89FF15DE-D495-4104-97C6-EFCA41EC7EE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
