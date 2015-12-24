@@ -1,35 +1,45 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
-class ReplaceSubString
+internal class ReplaceSubString
 {
     // Write a program that replaces all occurrences of the sub-string start with the sub-string finish in a text file. Ensure it will
     // work with large files (e.g. 100 MB).
-    static void Main()
+    private static void Main()
     {
-        string path = @"..\..\Files\input.txt";
+        string pathIn = @"..\..\Files\input.txt";
+        string pathOut = @"..\..\Files\output.txt";
 
-        string old = "start";
-        string _new = "finish";
+        string oldSubStr = "start";
+        string newSubStr = "finish";
 
-        var reader = new StreamReader(path);
+        var reader = new StreamReader(pathIn);
+        var writer = new StreamWriter(pathOut);
 
-        using (reader)
+        Console.WriteLine("Replacing...");
+        try
         {
-            string line = reader.ReadLine();
-
-            while (line != null)
+            using (reader)
             {
-                line.Replace()
+                using (writer)
+                {
+                    string line = reader.ReadLine();
 
-                line = reader.ReadLine();
+                    while (line != null)
+                    {
+                        line = line.Replace(oldSubStr, newSubStr);  // replace all occurrences of the oldSubStr with newSubStr within the current line read
+                        writer.WriteLine(line); // write the replaced line into a new file
+
+                        line = reader.ReadLine();
+                    }
+                }
             }
+
+            Console.WriteLine("Job completed successfully!");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Job was aborted and result is incomplete...\nPlease debug to find the problem." + "\n\nHint: {0}" + "\n\n{1}", ex.Message, ex.StackTrace);
         }
     }
-
-
 }
