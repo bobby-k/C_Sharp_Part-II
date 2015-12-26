@@ -27,6 +27,7 @@ internal class ReplaceWholeWord
                     while (line != null)
                     {
                         string[] words = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
                         for (int i = 0; i < words.Length; i++)
                         {
                             if (words[i] == oldWord)
