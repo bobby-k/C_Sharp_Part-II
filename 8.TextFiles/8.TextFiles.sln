@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem8.ReplaceWholeWord",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem9.DeleteOddLines", "Problem9.DeleteOddLines\Problem9.DeleteOddLines.csproj", "{9F4815DE-59D7-4F98-B6F2-7D8ABA23C549}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem10.ExtractTextFromXML", "Problem10.ExtractTextFromXML\Problem10.ExtractTextFromXML.csproj", "{DE610AC1-70FE-4BBE-8B55-0FA439E5BB78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{9F4815DE-59D7-4F98-B6F2-7D8ABA23C549}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F4815DE-59D7-4F98-B6F2-7D8ABA23C549}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F4815DE-59D7-4F98-B6F2-7D8ABA23C549}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE610AC1-70FE-4BBE-8B55-0FA439E5BB78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE610AC1-70FE-4BBE-8B55-0FA439E5BB78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE610AC1-70FE-4BBE-8B55-0FA439E5BB78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE610AC1-70FE-4BBE-8B55-0FA439E5BB78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
