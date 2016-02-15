@@ -1,0 +1,28 @@
+Problem 1. Strings in C#.
+
+DESCRIBE THE STRINGS IN C#.
+
+String is an immutable(always when the refered value is changed, a new string is created and assigned with that changed value) sequence of characters.It is a reference data type although it behaves as value type.Strings are declared by the keyword string.They can be initialized by string literals
+--------------------------------------------------------------------------------------------------------------------------
+
+WHAT IS TYPICAL FOR THE STRING DATA TYPE?
+
+All operations on strings create new string and return that new string, so always when one manipulate a string, at the end of that manipulation has to assign the result to a new variable of the same type or to the old one(i.e. to use "=") otherwise there will be no effect after that manipulation.This happens because strings are reference type but they are made to behave as value types.
+Concatenating a lot of strings directly(i.e. with "+" or "+=") is a slow operation.
+--------------------------------------------------------------------------------------------------------------------------
+
+DESCRIBE THE MOST IMPORTANT METHODS OF THE STRING CLASS.
+
+The methods's names in the string class are very descriptive, but here is a list of some of the most important ones:
+	.IndexOf() --> finds the index of the first occurrence of the searched string in the current System.String object
+	.Split() --> splits the current string by specified characters into elements in array of strings
+	.Substring() --> gets a substring from the current string by specified start position
+	.Contains() --> checks if a string object contains a specified string
+	.Insert() --> inserts a specified string into a specified position in the current string
+	.Remove() --> removes all characters from the current string staring at specified position and going to the end
+	.Replace() --> replaces all occurrances of a specified string in the current string with another specified string
+	.ToUpper() and ToLower() --> transforms all characters in the current string accordingly to upper or to lower case
+	.Trim() --> trims, i.e. deletes all kind of white space before and after the current System.String object
+	.Join() --> joins, i.e. puts together in a string the elements of a collection separated by a specified string
+	.Format() --> formats the value using specified rules before assigning it to a string variable
+--------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,4 @@
+This is some very stupid meaningless text file.
+The only purpose of it is to test the homework task given by the Telerik Trainers Team.
+Bla bla bla... and some more and more of that bla...bla.
+
