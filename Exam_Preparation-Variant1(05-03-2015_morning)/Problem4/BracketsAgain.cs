@@ -2,133 +2,253 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 
-class BracketsAgain
+internal class BracketsAgain
 {
-    static void Main()
+    private static string[] keyWords = new string[]
     {
-        var reader = new StreamReader(@"D:\C#2\Problem 4\Tests\test.002.in.txt");
-        int lines = int.Parse(reader.ReadLine().Trim());
+        "abstract",
+        "as",
+        "base",
+        "break",
+        "case",
+        "catch",
+        "checked",
+        "class",
+        "const",
+        "continue",
+        "default",
+        "delegate",
+        "do",
+        "else",
+        "enum",
+        "event",
+        "explicit",
+        "extern",
+        "false",
+        "finally",
+        "fixed",
+        "for",
+        "foreach",
+        "goto",
+        "if",
+        "implicit",
+        "in",
+        "interface",
+        "internal",
+        "is",
+        "lock",
+        "namespace",
+        "new",
+        "null",
+        "operator",
+        "out",
+        "override",
+        "params",
+        "private",
+        "protected",
+        "public",
+        "readonly",
+        "ref",
+        "return",
+        "sealed",
+        "sizeof",
+        "stackalloc",
+        "static",
+        "struct",
+        "switch",
+        "this",
+        "throw",
+        "true",
+        "try",
+        "typeof",
+        "unchecked",
+        "unsafe",
+        "using",
+        "virtual",
+        "void",
+        "volatile",
+        "while"
+    };
 
-        StringBuilder methodName = new StringBuilder();
-        var invokedMethods = new List<string>();
-        var staticMethods = new List<string>();
-        string capitalLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static void Main()
+    {
+        // var reader = new StreamReader(@"D:\C#2\Problem 4\Tests\test.000.001.in.txt");
+        int totalNumOfLines = int.Parse(Console.ReadLine().Trim());
 
-        for (int i = 0; i < lines; i++)
+        var methodCalls = new List<string>();
+        string staticMethodName = string.Empty;
+        bool foundNewStatic = false;
+
+        for (int numOfLine = 0; numOfLine < totalNumOfLines; numOfLine++)
         {
-            string currentLine = reader.ReadLine().Trim();
+            string currentLine = Console.ReadLine().Trim();
 
-            int index = currentLine.IndexOf("static");
-            if (index > -1)
+            #region if current line starts with "static" and there is another "static" before that
+            if (currentLine.IndexOf("static ") == 0 && foundNewStatic)
             {
-                int nameIndex = currentLine.IndexOf(' ', index + 7);
-                char currentChar = currentLine[++nameIndex];
-                while (currentChar != '(')
+                string contentOfMethodCalls = string.Empty;
+                if (methodCalls.Count > 0)
                 {
-                    methodName.Append(currentChar);
-                    currentChar = currentLine[++nameIndex];
+                    contentOfMethodCalls = string.Join(", ", methodCalls);
+                }
+                else
+                {
+                    contentOfMethodCalls = "None";
                 }
 
-                staticMethods.Add(methodName.ToString());
-
-                // finds invoked methods by finding .METHODNAME(
-
-                bool endOfMethodDeclaration = false;
-                int numOpennigBrackets = 0;
-                int numClosingBrackets = 0;
-                while (!endOfMethodDeclaration)
+                Console.WriteLine("{0} -> {1}", staticMethodName, contentOfMethodCalls);
+                methodCalls.Clear();
+                staticMethodName = GetStaticMethodName(currentLine);
+                var foundMethodCalls = CheckForMethodCall(currentLine, currentLine.IndexOf('('));
+                if (foundMethodCalls.Count > 0)
                 {
-                    currentLine = reader.ReadLine().Trim();
-                    i++;
-
-                    for (int currentIndex = 0; currentIndex < currentLine.Length; currentIndex++)
-                    {
-                        switch (currentLine[currentIndex])
-                        {
-                            case '{':
-                                numOpennigBrackets++;
-                                break;
-                            case '}':
-                                numClosingBrackets++;
-                                break;
-                            case '.':
-                                int indexOfBracket = currentLine.IndexOf('(', currentIndex);
-                                StringBuilder method = new StringBuilder();
-                                for (int k = currentIndex + 1; k < indexOfBracket; k++)
-                                {
-                                    method.Append(currentLine[k]);
-                                }
-
-                                if (method.Length > 0)
-                                {
-                                    invokedMethods.Add(method.ToString());
-                                }
-
-                                if (indexOfBracket > -1)
-                                {
-                                    currentIndex = indexOfBracket;
-                                }
-                                break;
-
-                            default:
-                                if (capitalLetters.Contains(currentLine[currentIndex]))
-                                {
-                                    string currentWord = GetCurrentWord(currentIndex, currentLine);
-                                    if (staticMethods.Contains(currentWord))
-                                    {
-                                        invokedMethods.Add(currentWord);
-                                        currentIndex += currentWord.Length - 1; // poneje currentIndex ste se uvelichi pri zavartaneto
-                                    }
-                                    else
-                                    {
-                                        currentIndex += currentWord.Length - 1; // poneje currentIndex ste se uvelichi pri zavartaneto
-                                    }
-                                }
-                                break;
-                        }
-                    }
-
-                    if (numOpennigBrackets == numClosingBrackets)
-                    {
-                        endOfMethodDeclaration = true;
-                    }
+                    methodCalls.AddRange(foundMethodCalls);
                 }
             }
+
+            #endregion if current line starts with "static" and there is another "static" before that
+
+            #region if current line starts with "static" and there is no other "static" before that
+            else if (currentLine.IndexOf("static ") == 0)
+            {
+                foundNewStatic = true;
+                staticMethodName = GetStaticMethodName(currentLine);
+
+                var foundMethodCalls = CheckForMethodCall(currentLine, currentLine.IndexOf('('));
+                if (foundMethodCalls.Count > 0)
+                {
+                    methodCalls.AddRange(foundMethodCalls);
+                }
+            }
+
+            #endregion if current line starts with "static" and there is no other "static" before that
+
+            #region if current line doesn't have "static" but it's already in a "static" method so just check for method calls
+            else if (staticMethodName.Length > 0)
+            {
+                // check for method calls to the end of line
+                var foundMethodCalls = CheckForMethodCall(currentLine, 0);
+                if (foundMethodCalls.Count > 0)
+                {
+                    methodCalls.AddRange(foundMethodCalls);
+                }
+            }
+
+            #endregion if current line doesn't have "static" but it's already in a "static" method so just check for method calls
+
+            #region if there is no more than 1 static methods there will be no output so we prevent that by this check
+            if (numOfLine == totalNumOfLines - 1 && staticMethodName.Length > 0)
+            {
+                string contentOfMethodCalls = string.Empty;
+                if (methodCalls.Count > 0)
+                {
+                    contentOfMethodCalls = string.Join(", ", methodCalls);
+                }
+                else
+                {
+                    contentOfMethodCalls = "None";
+                }
+
+                Console.WriteLine("{0} -> {1}", staticMethodName, contentOfMethodCalls);
+            }
+
+            #endregion if there is no more than 1 static methods there will be no output so we prevent that by this check
+        }
+    }
+
+    private static List<string> CheckForMethodCall(string currentLine, int currentIndex)
+    {
+        var foundMethodCalls = new List<string>();
+        var currentWord = new StringBuilder();
+        bool isKeyword = false;
+        string lastFoundKeyword = string.Empty;
+
+        #region Get current word and check when done if it's a keyword or method name.If it's a method add it to "foundMethodCalls"
+
+        for (int currentCharIndex = currentIndex; currentCharIndex < currentLine.Length; currentCharIndex++)
+        {
+            if (char.IsLetter(currentLine[currentCharIndex]))
+            {
+                currentWord.Append(currentLine[currentCharIndex]);
+            }
             else
+            {
+                if (currentWord.Length > 0)
+                {
+                    if (keyWords.Contains(currentWord.ToString()))
+                    {
+                        isKeyword = true;
+                        lastFoundKeyword = currentWord.ToString();
+                        currentWord.Clear();
+                        continue;
+                    }
+                    else if (lastFoundKeyword != "new")
+                    {
+                        isKeyword = false;
+                    }
+
+                    if (IsMethodCall(currentLine, currentCharIndex))
+                    {
+                        if (isKeyword)
+                        {
+                            isKeyword = false;
+                            currentWord.Clear();
+                            continue;
+                        }
+
+                        foundMethodCalls.Add(currentWord.ToString());
+                    }
+
+                    currentWord.Clear();
+                }
+            }
+        }
+
+        #endregion Get current word and check when done if it's a keyword or method name.If it's a method add it to "foundMethodCalls"
+
+        return foundMethodCalls;
+    }
+
+    private static bool IsMethodCall(string currentLine, int currentCharIndex)
+    {
+        for (int i = currentCharIndex; i < currentLine.Length; i++)
+        {
+            if (currentLine[i] == ' ')
             {
                 continue;
             }
 
-            string foundMethodCalls = string.Empty;
-            if (invokedMethods.Count > 0)
+            if (currentLine[i] == '(')
             {
-                foundMethodCalls = string.Join(", ", invokedMethods);
+                return true;
             }
-            else
-            {
-                foundMethodCalls = "None";
-            }
-            Console.WriteLine("{0} -> {1}", methodName.ToString(), foundMethodCalls);
-            methodName.Clear();
-            invokedMethods.Clear();
+
+            break;
         }
 
+        return false;
     }
 
-    private static string GetCurrentWord(int startIndex, string currentLine)
+    private static string GetStaticMethodName(string currentLine)
     {
-        var currentWord = new StringBuilder();
-        while (char.IsLetterOrDigit(currentLine[startIndex]))
-        {
-            char currentChar = currentLine[startIndex];
-            currentWord.Append(currentChar);
+        int indexOfOpnBracket = currentLine.IndexOf('(');
+        string staticDeclaration = currentLine.Substring(0, indexOfOpnBracket).TrimEnd();
+        var nameChars = new StringBuilder();
 
-            startIndex++;
+        int currentChar = staticDeclaration.Length - 1;
+        while (staticDeclaration[currentChar] != ' ')
+        {
+            nameChars.Append(staticDeclaration[currentChar]);
+            currentChar--;
         }
 
-        return currentWord.ToString();
+        StringBuilder name = new StringBuilder();
+        for (int i = nameChars.Length - 1; i >= 0; i--)
+        {
+            name.Append(nameChars[i]);
+        }
+
+        return name.ToString();
     }
 }
