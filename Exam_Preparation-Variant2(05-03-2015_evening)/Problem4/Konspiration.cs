@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 
-class Konspiration
+internal class Konspiration
 {
-    static List<string> foundMethodCalls = new List<string>();
-    static string staticDeclarationName = string.Empty;
-    static string[] keywords = { "abstract", "as", "base", "bool", "break", "byte", "case", "catch", "char", "checked", "class", "const", "continue", "decimal", "default", "delegate", "do", "double", "else", "enum", "event", "explicit", "extern", "false", "finally", "fixed", "float", "for", "foreach", "goto", "if", "implicit", "in", "int", "interface", "internal", "is", "lock", "long", "namespace", "new", "null", "object", "operator", "out", "override", "params", "private", "protected", "public", "readonly", "ref", "return", "sbyte", "sealed", "short", "sizeof", "stackalloc", "static", "string", "struct", "switch", "this", "throw", "true", "try", "typeof", "uint", "ulong", "unchecked", "unsafe", "ushort", "using", "virtual", "void", "volatile", "while" };
-    static void Main()
+    private static List<string> foundMethodCalls = new List<string>();
+    private static string staticDeclarationName = string.Empty;
+    private static string[] keywords = { "abstract", "as", "base", "bool", "break", "byte", "case", "catch", "char", "checked", "class", "const", "continue", "decimal", "default", "delegate", "do", "double", "else", "enum", "event", "explicit", "extern", "false", "finally", "fixed", "float", "for", "foreach", "goto", "if", "implicit", "in", "int", "interface", "internal", "is", "lock", "long", "namespace", "new", "null", "object", "operator", "out", "override", "params", "private", "protected", "public", "readonly", "ref", "return", "sbyte", "sealed", "short", "sizeof", "stackalloc", "static", "string", "struct", "switch", "this", "throw", "true", "try", "typeof", "uint", "ulong", "unchecked", "unsafe", "ushort", "using", "virtual", "void", "volatile", "while" };
+
+    private static void Main()
     {
-        //var reader = new StreamReader(@"D:\C#2\Variant 2 (2015-03-05, Evening)\Problem 4\Tests\test.001.in.txt");
+        // var reader = new StreamReader(@"D:\C#2\Variant 2 (2015-03-05, Evening)\Problem 4\Tests\test.001.in.txt");
         int totalNumOfLines = int.Parse(Console.ReadLine());
         bool newStaticFound = false;
 
@@ -65,13 +64,11 @@ class Konspiration
                     callsContent = string.Join(", ", foundMethodCalls);
                     Console.WriteLine("{0} -> {1} -> {2}", staticDeclarationName, foundMethodCalls.Count, callsContent);
                 }
-
-
             }
         }
     }
 
-    static void CheckForMethodCall(string line, int startIndex = 0)
+    private static void CheckForMethodCall(string line, int startIndex = 0)
     {
         bool isKeyword = false;
         string lastKeyword = string.Empty;
@@ -111,7 +108,7 @@ class Konspiration
         }
     }
 
-    static bool IsMethodCall(string word, string line, int startindex = 0)
+    private static bool IsMethodCall(string word, string line, int startindex = 0)
     {
         int indexOfCharAfterWord = line.IndexOf(word, startindex) + word.Length;
         for (int i = indexOfCharAfterWord; i < line.Length; i++)
@@ -132,7 +129,7 @@ class Konspiration
         return false;
     }
 
-    static string GetCurrentWord(string line, int index)
+    private static string GetCurrentWord(string line, int index)
     {
         var word = new StringBuilder();
 
@@ -151,7 +148,7 @@ class Konspiration
         return word.ToString();
     }
 
-    static string GetStaticName(string line)
+    private static string GetStaticName(string line)
     {
         StringBuilder nameReversed = new StringBuilder();
         StringBuilder name = new StringBuilder();
@@ -183,7 +180,7 @@ class Konspiration
         return name.ToString();
     }
 
-    static bool CheckForStaticDeclaration(string line)
+    private static bool CheckForStaticDeclaration(string line)
     {
         int indexOfStatic = line.IndexOf("static ");
         if (indexOfStatic == 0)
