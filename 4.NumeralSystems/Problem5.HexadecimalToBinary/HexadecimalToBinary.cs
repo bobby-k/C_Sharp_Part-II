@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Threading;
 
 internal class HexadecimalToBinary
@@ -11,7 +12,7 @@ internal class HexadecimalToBinary
         Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
         Console.Write("Please enter a valid hex number: ");
-        string hex = Console.ReadLine();
+        string hex = Console.ReadLine().ToUpper();
 
         ConvertHexToBinary(hex);
     }
@@ -73,28 +74,27 @@ internal class HexadecimalToBinary
 
                 case 'F': binaryRepr += "1111";
                     break;
-
-                case 'a': binaryRepr += "1010";
-                    break;
-
-                case 'b': binaryRepr += "1011";
-                    break;
-
-                case 'c': binaryRepr += "1100";
-                    break;
-
-                case 'd': binaryRepr += "1101";
-                    break;
-
-                case 'e': binaryRepr += "1110";
-                    break;
-
-                case 'f': binaryRepr += "1111";
-                    break;
             }
         }
 
+        binaryRepr = RemoveLeadingZeroes(binaryRepr);
         Console.WriteLine("{0} in hexadecimal system is\n{1} in binary system", hex, binaryRepr);
+    }
+
+    private static string RemoveLeadingZeroes(string binaryRepr)
+    {
+        StringBuilder binary = new StringBuilder(binaryRepr);
+
+        int index = 0;
+        int length = 0;
+        while (binary[index] != '1')
+        {
+            length++;
+            index++;
+        }
+
+        binary.Remove(0, length);
+        return binary.ToString();
     }
 
     private static string Validate(string hex)

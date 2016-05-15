@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
+using System.Numerics;
+using System.Text;
 using System.Threading;
 
 internal class OneSystemToAnyOther
@@ -12,6 +14,9 @@ internal class OneSystemToAnyOther
 
         Console.Write("Please specify the base s: ");
         int baseS = int.Parse(Console.ReadLine());
+
+        Console.Write("Please enter the base {0} number to convert from: ", baseS);
+        string number = Console.ReadLine().ToUpper();
 
         Console.Write("Please specify the base d: ");
         int baseD = int.Parse(Console.ReadLine());
@@ -45,16 +50,31 @@ internal class OneSystemToAnyOther
 
         #endregion Validations
 
-        Console.Write("Please enter the base {0} number to convert from: ", baseS);
-        string number = Console.ReadLine().ToUpper();
-
         number = Validate(number, baseS);
 
-        int decimalNum = ConvertToDecimal(number, baseS);
+        BigInteger decimalNum = ConvertToDecimal(number, baseS);
         string convertedValue = ConvertFromDecimal(decimalNum, baseD);
 
         Console.Clear();
+        convertedValue = RemoveLeadingZeroes(convertedValue);
         Console.WriteLine("{0} in base({1}) system is\n{2} in base({3}) system", number, baseS, convertedValue, baseD);
+        
+    }
+
+    private static string RemoveLeadingZeroes(string convertedValue)
+    {
+        StringBuilder converted = new StringBuilder(convertedValue);
+
+        int index = 0;
+        int length = 0;
+        while (converted[index] == '0')
+        {
+            length++;
+            index++;
+        }
+
+        converted.Remove(0, length);
+        return converted.ToString();
     }
 
     private static string Validate(string number, int baseS)
@@ -88,72 +108,80 @@ internal class OneSystemToAnyOther
         return number;
     }
 
-    private static int ConvertToDecimal(string number, int baseS)
+    private static BigInteger ConvertToDecimal(string number, int baseS)
     {
-        double decimalNum = 0;
+        BigInteger decimalNum = 0;
         int lastIndex = number.Length - 1;
         for (int i = 0; i < number.Length; i++)
         {
             switch (number[lastIndex])
             {
-                case 'A': decimalNum += 10 * (Math.Pow(baseS, i));
+                case 'A': decimalNum += (BigInteger)(10 * (Math.Pow(baseS, i)));
                     break;
 
-                case 'B': decimalNum += 11 * (Math.Pow(baseS, i));
+                case 'B': decimalNum += (BigInteger)(11 * (Math.Pow(baseS, i)));
                     break;
 
-                case 'C': decimalNum += 12 * (Math.Pow(baseS, i));
+                case 'C': decimalNum += (BigInteger)(12 * (Math.Pow(baseS, i)));
                     break;
 
-                case 'D': decimalNum += 13 * (Math.Pow(baseS, i));
+                case 'D': decimalNum += (BigInteger)(13 * (Math.Pow(baseS, i)));
                     break;
 
-                case 'E': decimalNum += 14 * (Math.Pow(baseS, i));
+                case 'E': decimalNum += (BigInteger)(14 * (Math.Pow(baseS, i)));
                     break;
 
-                case 'F': decimalNum += 15 * (Math.Pow(baseS, i));
+                case 'F': decimalNum += (BigInteger)(15 * (Math.Pow(baseS, i)));
                     break;
 
-                default: decimalNum += (number[lastIndex] - '0') * (Math.Pow(baseS, i));
+                default: decimalNum += (BigInteger)((number[lastIndex] - '0') * (Math.Pow(baseS, i)));
                     break;
             }
+
             lastIndex--;
         }
 
-        return Convert.ToInt32(decimalNum);
+        return decimalNum;
     }
 
-    private static string ConvertFromDecimal(int decimalNum, int baseD)
+    private static string ConvertFromDecimal(BigInteger decimalNum, int baseD)
     {
         string convertedValue = "";
         string tempValue = "";
 
         while (decimalNum != 0)
         {
-            int remain = decimalNum % baseD;
-            switch (remain)
+            BigInteger remain = decimalNum % baseD;
+            
+            if (remain == 10)
             {
-                case 10: tempValue += 'A';
-                    break;
-
-                case 11: tempValue += 'B';
-                    break;
-
-                case 12: tempValue += 'C';
-                    break;
-
-                case 13: tempValue += 'D';
-                    break;
-
-                case 14: tempValue += 'E';
-                    break;
-
-                case 15: tempValue += 'F';
-                    break;
-
-                default: tempValue += remain;
-                    break;
+                tempValue += 'A';
             }
+            else if (remain == 11)
+            {
+                tempValue += 'B';
+            }
+            else if (remain == 12)
+            {
+                tempValue += 'C';
+            }
+            else if (remain == 13)
+            {
+                tempValue += 'D';
+            }
+            else if (remain == 14)
+            {
+                tempValue += 'E';
+            }
+            else if (remain == 15)
+            {
+                tempValue += 'F';
+            }
+            else
+            {
+                tempValue += remain;
+            }
+
             decimalNum /= baseD;
         }
 
