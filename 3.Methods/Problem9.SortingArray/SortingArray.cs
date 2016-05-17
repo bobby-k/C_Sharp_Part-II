@@ -11,6 +11,22 @@ namespace Problem9.SortingArray
         // Using it write another method that sorts an array in ascending / descending order.
 
         // P.S. Имената на методите и съдържанието им са достатъчно описателни и няма нужда от допълнителни пояснения
+
+        static void Main()
+        {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+
+            int[] arr1 = { 1, 2, 32, 9, 4, 89, 6, 7, 78, 11 };
+
+            Console.WriteLine("The maximal element is: {0}", arr1[GetMaxElementIndexInRange(arr1, 0, arr1.Length - 1)]);
+
+            SortDescending(arr1);
+            Console.WriteLine(string.Join(", ", arr1));
+
+            SortAscending(arr1);
+            Console.WriteLine(string.Join(", ", arr1));
+        }
+
         static int GetMaxElementIndexInRange(int[] array, int startIndex, int endIndex)
         {
             int maxElement = array[startIndex];
@@ -63,21 +79,6 @@ namespace Problem9.SortingArray
         {
             string arr = string.Join(", ", array);
             Console.WriteLine(arr);
-        }
-
-        static void Main()
-        {
-            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
-
-            int[] arr1 = { 1, 2, 32, 9, 4, 89, 6, 7, 78, 11 };
-
-            Console.WriteLine("The maximal element is: {0}", arr1[GetMaxElementIndexInRange(arr1, 0, arr1.Length - 1)]);
-
-            SortDescending(arr1);
-            Console.WriteLine(string.Join(", ", arr1));
-
-            SortAscending(arr1);
-            Console.WriteLine(string.Join(", ", arr1));
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Problem10.NFactorial
 {
     internal class NFactorial
     {
-        // Write a program to calculate n! for each n in the range [1..100].
+        // Write a program to calculate n! for each n in the range [0..100].
         // Hint: Implement first a method that multiplies a number represented as array of digits by given integer number.
 
         // Логика: програмата ще пита за число от 1 до 100 вкл.,после ще превръща подаденото число в масив от цифрите му и ще го
@@ -143,15 +143,21 @@ namespace Problem10.NFactorial
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
             // The user input
-            Console.Write("Enter a number between 1 and 100 (incl.) to see its factorial: ");
+            //Console.Write("Enter a number between 1 and 100 (incl.) to see its factorial: ");
             int number = int.Parse(Console.ReadLine());
 
             // валидация на входните данни
-            while (number <= 0 || number > 100)
+            while (number < 0 || number > 100)
             {
                 Console.WriteLine("Wrong input!!!");
                 Console.Write("Try again: ");
                 number = int.Parse(Console.ReadLine());
+            }
+
+            if (number == 0)
+            {
+                Console.WriteLine(1);
+                return;
             }
 
             Print(Factorial(number));
@@ -160,13 +166,13 @@ namespace Problem10.NFactorial
         // този метод ще се грижи за отпечатването на натрупаният от умноженията резултат
         private static void Print(int[] result)
         {
-            Console.WriteLine();
             // принтира наопъки за да извади правилната последователност на цифрите
             for (int i = result.Length - 1; i >= 0; i--)
             {
                 Console.Write(result[i]);
             }
-            Console.WriteLine("\n");
+
+            Console.WriteLine();
         }
     }
 }

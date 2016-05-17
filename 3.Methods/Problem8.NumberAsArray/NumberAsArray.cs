@@ -80,6 +80,68 @@ namespace Problem8.NumberAsArray
 
             BigInteger c = SumOfTwoNumbers(a, b);
             Console.WriteLine(c);
+
+            #region A similar problem with a shorter solution:
+            
+            //// Write a method that adds two positive integer numbers represented as arrays of digits (each array element arr[i] contains
+            //// a digit; the last digit is kept in arr[0]). Write a program that reads two arrays representing positive integers and
+            //// outputs their sum.
+            
+            //// Input: On the first line you will receive two numbers separated by spaces - the size of each array 
+            //// On the second line you will receive the first array 
+            //// On the third line you will receive the second array
+
+            //// output: Print the sum as an array of digits (as described).Digits should be separated by spaces
+
+            //// constraints: Each of the numbers that will be added could have up to 10 000 digits.
+            //// Time limit: 0.1s
+            //// Memory limit: 16MB
+
+            //string[] sizes = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            //string[] array1AsStr = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            //string[] array2AsStr = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+            ////initializing
+            //List<int> num1Digits = new List<int>();
+            //List<int> num2Digits = new List<int>();
+            //for (int i = 0; i < array1AsStr.Length; i++)
+            //{
+            //    num1Digits.Add(int.Parse(array1AsStr[i]));
+            //}
+
+            //for (int i = 0; i < array2AsStr.Length; i++)
+            //{
+            //    num2Digits.Add(int.Parse(array2AsStr[i]));
+            //}
+
+            ////make equal number of digits
+            //if (num1Digits.Count < num2Digits.Count)
+            //{
+            //    for (int i = num1Digits.Count; i < num2Digits.Count; i++)
+            //    {
+            //        num1Digits.Add(0);
+            //    }
+            //}
+            //else if (num2Digits.Count < num1Digits.Count)
+            //{
+            //    for (int i = num2Digits.Count; i < num1Digits.Count; i++)
+            //    {
+            //        num2Digits.Add(0);
+            //    }
+            //}
+
+            ////sum
+            //List<int> result = new List<int>();
+            //int over = 0;
+            //for (int i = 0; i < num1Digits.Count; i++)
+            //{
+            //    int tempSum = num1Digits[i] + num2Digits[i] + over;
+            //    result.Add(tempSum % 10);
+            //    over = tempSum / 10;
+            //}
+
+            //Console.WriteLine(string.Join(" ",result));
+            #endregion
         }
     }
 }

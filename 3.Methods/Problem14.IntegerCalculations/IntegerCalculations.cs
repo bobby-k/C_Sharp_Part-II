@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Numerics;
 using System.Threading;
 
 internal class IntegerCalculations
@@ -75,7 +76,7 @@ internal class IntegerCalculations
 
     private static void Product(params int[] numbers)
     {
-        int product = 1;
+        BigInteger product = 1;
         foreach (int number in numbers)
         {
             product *= number;
