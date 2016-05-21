@@ -7,6 +7,7 @@ using System.IO;
 
 class Thron3D
 {
+    // unfinished task TODO: find the distance from the start point to the crash point and remove the stream reader
     static bool[,] playField;
     static int x, y, z;
     static string redCmds;
