@@ -1,39 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 internal class ExtractSentences
 {
-    // Write a program that extracts from a given text all sentences containing given word.Consider that the sentences are separated by
-    // . and the words – by non-letter symbols.
     private static void Main()
     {
-        Console.WriteLine("Enter some text here:");
-        string text = Console.ReadLine();
-        Console.WriteLine(new string('*', 25));
-        Console.Write("Specify the word to look for in a sentence: ");
+        // Write a program that extracts from a given text all sentences containing given word. Sentences are separated by .
+        // and the words – by non-letter symbols
+
         string keyWord = Console.ReadLine();
-        Console.WriteLine(new string('*', 25));
+        string text = Console.ReadLine();
 
-        string wordSeparator = " ";
-        keyWord = keyWord.Insert(0, wordSeparator);
-        keyWord = keyWord.Insert(keyWord.Length, wordSeparator);
+        string[] sentences = text.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim()).ToArray();
 
-        string[] sentences = text.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
-
-        List<int> indexes = new List<int>();
+        List<string> result = new List<string>();
         for (int i = 0; i < sentences.Length; i++)
         {
-            if (sentences[i].IndexOf(keyWord) > 0)
+            List<string> words = new List<string>();
+            StringBuilder currentWord = new StringBuilder();
+            for (int j = 0; j < sentences[i].Length; j++)
             {
-                indexes.Add(i);
+                if (char.IsLetterOrDigit(sentences[i][j]))
+                {
+                    currentWord.Append(sentences[i][j]);
+                }
+                else
+                {
+                    words.Add(currentWord.ToString());
+                    currentWord.Clear();
+                }
+            }
+
+            words.Add(currentWord.ToString());
+
+            if (words.Contains(keyWord))
+            {
+                result.Add(string.Join(" ", words));
+                result.Add(". ");
             }
         }
 
-        for (int i = 0; i < indexes.Count; i++)
-        {
-            Console.Write(sentences[indexes[i]] + ".");
-        }
-
-        Console.WriteLine();
+        Console.WriteLine(string.Join("", result).Trim());
     }
 }

@@ -7,7 +7,7 @@ internal class BinaryFloatingPoint
     // Write a program that shows the internal binary representation of given 32-bit signed floating-point number in IEEE 754 format
     // (the C# type float).
 
-    private static float number = -21.15625f;
+    private static float number = -27.25f;
     private static float z = Math.Abs(number);
     private static int p = (int)Math.Floor(Math.Log(z, 2));
 
@@ -16,7 +16,7 @@ internal class BinaryFloatingPoint
     {
         Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
-        Console.WriteLine("{0} in binary is", number);
+        Console.WriteLine("{0} has binary representation of:", number);
 
         Console.Write("Sign  ");
         Console.Write("Exponent  ");

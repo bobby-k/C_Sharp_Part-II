@@ -14,11 +14,11 @@ internal class SubstringInText
 
         Console.Clear();
         Console.Write("Please specify the sub-string you want to count: ");
-        string target = Console.ReadLine();
+        string target = Console.ReadLine().ToLower();
 
         Console.Clear();
         int occurrences = CountSubstringOccurrences(target, text);
-        Console.WriteLine("The targeted sub-string \"{0}\" was found {1} times", target, occurrences);
+        Console.WriteLine("\"{0}\" is found at {1} places in the whole text",target , occurrences);
     }
 
     private static int CountSubstringOccurrences(string substring, string text)
@@ -26,9 +26,9 @@ internal class SubstringInText
         int counter = 0;
         int index = 0;
 
-        for (int i = index; i < text.Length; i += substring.Length)
+        for (int i = 0; i < text.Length;)
         {
-            index = text.IndexOf(substring, index + substring.Length);
+            index = text.IndexOf(substring, index, StringComparison.InvariantCultureIgnoreCase);
             if (index < 0)
             {
                 break;
@@ -37,6 +37,9 @@ internal class SubstringInText
             {
                 counter++;
             }
+
+            index += substring.Length;
+            i = index;
         }
 
         return counter;

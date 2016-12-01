@@ -6,7 +6,7 @@ internal class SquareRoot
     // print Invalid number. In all cases finally print Good bye. Use try-catch-finally block.
     private static void Main()
     {
-        Console.Write("Please enter an integer number here: ");
+        //Console.Write("Please enter an integer number here: ");
 
         try
         {
@@ -18,20 +18,20 @@ internal class SquareRoot
             else
             {
                 double result = Math.Sqrt(num);
-                Console.WriteLine(result);
+                Console.WriteLine("{0:N3}",result);
             }
         }
         catch (FormatException)
         {
-            Console.WriteLine("Invalid number...");
+            Console.WriteLine("Invalid number");
         }
         catch (ArgumentException)
         {
-            Console.WriteLine("Invalid number...");
+            Console.WriteLine("Invalid number");
         }
         finally
         {
-            Console.WriteLine("Good Bye.");
+            Console.WriteLine("Good bye");
         }
     }
 }

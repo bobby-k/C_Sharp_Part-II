@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MythicalNumbers", "MythicalNumbers\MythicalNumbers.csproj", "{5AA9256F-625E-4C67-97ED-E9F21109EF46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JumpJump", "JumpJump\JumpJump.csproj", "{CC838873-4064-41B2-9AA5-C106FB92639F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiddenMessage", "HiddenMessage\HiddenMessage.csproj", "{49C73B69-5C06-48FE-88F4-EF5E63861EB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MixingNumbers", "MixingNumbers\MixingNumbers.csproj", "{820CA7C0-2374-41FB-A7FD-A4290AF320A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5AA9256F-625E-4C67-97ED-E9F21109EF46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AA9256F-625E-4C67-97ED-E9F21109EF46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AA9256F-625E-4C67-97ED-E9F21109EF46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AA9256F-625E-4C67-97ED-E9F21109EF46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC838873-4064-41B2-9AA5-C106FB92639F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC838873-4064-41B2-9AA5-C106FB92639F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC838873-4064-41B2-9AA5-C106FB92639F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC838873-4064-41B2-9AA5-C106FB92639F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49C73B69-5C06-48FE-88F4-EF5E63861EB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49C73B69-5C06-48FE-88F4-EF5E63861EB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49C73B69-5C06-48FE-88F4-EF5E63861EB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49C73B69-5C06-48FE-88F4-EF5E63861EB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{820CA7C0-2374-41FB-A7FD-A4290AF320A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{820CA7C0-2374-41FB-A7FD-A4290AF320A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{820CA7C0-2374-41FB-A7FD-A4290AF320A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{820CA7C0-2374-41FB-A7FD-A4290AF320A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
