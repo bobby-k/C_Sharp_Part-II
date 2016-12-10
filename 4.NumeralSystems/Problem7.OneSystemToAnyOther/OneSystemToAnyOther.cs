@@ -13,6 +13,7 @@ internal class OneSystemToAnyOther
         Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
         Console.Write("Please specify the base s: ");
+
         int baseS = int.Parse(Console.ReadLine());
 
         Console.Write("Please enter the base {0} number to convert from: ", baseS);
@@ -58,7 +59,6 @@ internal class OneSystemToAnyOther
         Console.Clear();
         convertedValue = RemoveLeadingZeroes(convertedValue);
         Console.WriteLine("{0} in base({1}) system is\n{2} in base({3}) system", number, baseS, convertedValue, baseD);
-        
     }
 
     private static string RemoveLeadingZeroes(string convertedValue)
@@ -67,6 +67,7 @@ internal class OneSystemToAnyOther
 
         int index = 0;
         int length = 0;
+
         while (converted[index] == '0')
         {
             length++;
@@ -82,6 +83,7 @@ internal class OneSystemToAnyOther
         bool charIsValid = false;
         char[] masterChars = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
         char[] allowedChars = new char[baseS];
+
         for (int i = 0; i < allowedChars.Length; i++)
         {
             allowedChars[i] = masterChars[i];
@@ -112,29 +114,37 @@ internal class OneSystemToAnyOther
     {
         BigInteger decimalNum = 0;
         int lastIndex = number.Length - 1;
+
         for (int i = 0; i < number.Length; i++)
         {
             switch (number[lastIndex])
             {
-                case 'A': decimalNum += (BigInteger)(10 * (Math.Pow(baseS, i)));
+                case 'A':
+                    decimalNum += (BigInteger)(10 * (Math.Pow(baseS, i)));
                     break;
 
-                case 'B': decimalNum += (BigInteger)(11 * (Math.Pow(baseS, i)));
+                case 'B':
+                    decimalNum += (BigInteger)(11 * (Math.Pow(baseS, i)));
                     break;
 
-                case 'C': decimalNum += (BigInteger)(12 * (Math.Pow(baseS, i)));
+                case 'C':
+                    decimalNum += (BigInteger)(12 * (Math.Pow(baseS, i)));
                     break;
 
-                case 'D': decimalNum += (BigInteger)(13 * (Math.Pow(baseS, i)));
+                case 'D':
+                    decimalNum += (BigInteger)(13 * (Math.Pow(baseS, i)));
                     break;
 
-                case 'E': decimalNum += (BigInteger)(14 * (Math.Pow(baseS, i)));
+                case 'E':
+                    decimalNum += (BigInteger)(14 * (Math.Pow(baseS, i)));
                     break;
 
-                case 'F': decimalNum += (BigInteger)(15 * (Math.Pow(baseS, i)));
+                case 'F':
+                    decimalNum += (BigInteger)(15 * (Math.Pow(baseS, i)));
                     break;
 
-                default: decimalNum += (BigInteger)((number[lastIndex] - '0') * (Math.Pow(baseS, i)));
+                default:
+                    decimalNum += (BigInteger)((number[lastIndex] - '0') * (Math.Pow(baseS, i)));
                     break;
             }
 
@@ -152,7 +162,7 @@ internal class OneSystemToAnyOther
         while (decimalNum != 0)
         {
             BigInteger remain = decimalNum % baseD;
-            
+
             if (remain == 10)
             {
                 tempValue += 'A';
